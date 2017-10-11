@@ -5,7 +5,7 @@ angular.module('RouteControllers', [])
     .controller('RegisterController', function($scope, $location, UserAPIService, store) {
 
         $scope.registrationUser = {};
-        var url = "https://morning-castle-91468.herokuapp.com/";
+        var url = "https://django--todo.herokuapp.com/";
 
         $scope.login = function() {
             UserAPIService.callAPI(url + "accounts/api-token-auth/", $scope.data).then(function(results){
@@ -39,7 +39,7 @@ angular.module('RouteControllers', [])
     .controller('LoginController', function($scope, $location, UserAPIService, store) {
         
         $scope.loginUser = {};
-        var url = "https://morning-castle-91468.herokuapp.com/";
+        var url = "https://django--todo.herokuapp.com/";
 
         $scope.submitForm = function() {
             if ($scope.loginForm.$valid) {
@@ -62,7 +62,7 @@ angular.module('RouteControllers', [])
         store.remove('authToken');
     })
     .controller('TodoController', function($scope, $location, TodoAPIService, store) {
-        var url = "https://morning-castle-91468.herokuapp.com/";
+        var url = "https://django--todo.herokuapp.com/";
 
         $scope.authToken = store.get('authToken');
         $scope.username = store.get('username');
@@ -111,7 +111,7 @@ angular.module('RouteControllers', [])
     })
     .controller('EditTodoController', function($scope, $location, $routeParams, TodoAPIService, store) {
         var id = $routeParams.id;
-        var url = "https://morning-castle-91468.herokuapp.com/";
+        var url = "https://django--todo.herokuapp.com/";
 
         TodoAPIService.getTodos(url + "todo/" + id, $scope.username, store.get('authToken')).then(function(results) {
             $scope.todo = results.data;
